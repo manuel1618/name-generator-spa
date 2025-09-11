@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Name Generator</title>
+    <meta name="description" content="Generate random names with custom filters. Mobile-friendly name generator with 13,247 names.">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">Name Generator</h1>
+            <p class="subtitle">Generate random names with custom filters</p>
+        </header>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-card">
+                <h2 class="filter-title">Filter Options ✨</h2>
+                
+                <div class="filter-grid">
+                    <!-- Gender Selection -->
+                    <div class="filter-group">
+                        <label for="gender" class="filter-label">Gender 🚻</label>
+                        <select id="gender" class="filter-select">
+                            <option value="any">Any Gender</option>
+                            <option value="m">Male</option>
+                            <option value="w">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Starting Letter -->
+                    <div class="filter-group">
+                        <label for="startWith" class="filter-label">Start with 🔤</label>
+                        <input type="text" id="startWith" class="filter-input" placeholder="e.g., A">
+                    </div>
+
+                    <!-- Ending Letter -->
+                    <div class="filter-group">
+                        <label for="endWith" class="filter-label">End with 🔚</label>
+                        <input type="text" id="endWith" class="filter-input" placeholder="e.g., a">
+                    </div>
+
+                    <!-- Must Contain -->
+                    <div class="filter-group">
+                        <label for="contains" class="filter-label">Must contain ✅</label>
+                        <input type="text" id="contains" class="filter-input" placeholder="e.g., a, e, i"> 
+                        <small class="filter-hint">Comma-separated letters</small>
+                    </div>
+
+                    <!-- Not Starting With -->
+                    <div class="filter-group">
+                        <label for="notStarting" class="filter-label">Not starting with 🚫</label>
+                        <input type="text" id="notStarting" class="filter-input" placeholder="e.g., X, Y, Z">
+                        <small class="filter-hint">Comma-separated letters</small>
+                    </div>
+
+                    <!-- Not Ending With -->
+                    <div class="filter-group">
+                        <label for="notEnding" class="filter-label">Not ending with 🚫</label>
+                        <input type="text" id="notEnding" class="filter-input" placeholder="e.g., x, y, z">
+                        <small class="filter-hint">Comma-separated letters</small>
+                    </div>
+
+                    <!-- Not Containing -->
+                    <div class="filter-group">
+                        <label for="notContaining" class="filter-label">Not containing 🚫</label>
+                        <input type="text" id="notContaining" class="filter-input" placeholder="e.g., q, x, z">
+                        <small class="filter-hint">Comma-separated letters</small>
+                    </div>
+
+                    <!-- Batch Size -->
+                    <div class="filter-group">
+                        <label for="batchSize" class="filter-label">Batch size 📦</label>
+                        <input type="number" id="batchSize" class="filter-input" value="10" min="1" max="100">
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="generateBtn" class="btn btn-primary">✨ Generate Names</button>
+                    <button id="clearBtn" class="btn btn-secondary">🧹 Clear Filters</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="results-card">
+                <div class="results-header">
+                    <h2 class="results-title">Generated Names</h2>
+                    <div class="results-stats">
+                        <span id="resultsCount" class="results-count">0 names</span>
+                        <span id="resultsTime" class="results-time"></span>
+                    </div>
+                </div>
+                
+                <div id="resultsContainer" class="results-container">
+                    <div class="results-placeholder">
+                        <p class="placeholder-text">Click "Generate Names" to see results</p>
+                    </div>
+                </div>
+
+                <div id="loadMoreContainer" class="load-more-container" style="display: none;">
+                    <button id="loadMoreBtn" class="btn btn-outline">
+                        Load More Names
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <div class="status-content">
+                <span id="statusText" class="status-text">Ready</span>
+                <span id="totalNames" class="total-names">13,247 names available</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p class="loading-text">Generating names...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
