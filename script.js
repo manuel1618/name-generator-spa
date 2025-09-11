@@ -92,6 +92,7 @@ class NameGenerator {
             }
             
             this.names = await response.json();
+            this.genderNeutralNames = this.findGenderNeutralNames();
             this.updateStatus(`Loaded ${this.names.length.toLocaleString()} names`);
             this.totalNames.textContent = `${this.names.length.toLocaleString()} names available`;
             
@@ -102,6 +103,37 @@ class NameGenerator {
         } finally {
             this.showLoading(false);
         }
+    }
+
+    findGenderNeutralNames() {
+        const nameCounts = {};
+        
+        // Count occurrences of each name by gender
+        this.names.forEach(nameObj => {
+            if (!nameCounts[nameObj.name]) {
+                nameCounts[nameObj.name] = { m: 0, w: 0 };
+            }
+            nameCounts[nameObj.name][nameObj.gender]++;
+        });
+        
+        // Find names that exist in both male and female versions
+        const genderNeutralNames = [];
+        Object.keys(nameCounts).forEach(name => {
+            if (nameCounts[name].m > 0 && nameCounts[name].w > 0) {
+                // Find the name object with the highest popularity
+                const maleVersion = this.names.find(n => n.name === name && n.gender === 'm');
+                const femaleVersion = this.names.find(n => n.name === name && n.gender === 'w');
+                
+                // Use the version with higher popularity, or male if equal
+                const bestVersion = (maleVersion.popularity >= femaleVersion.popularity) ? maleVersion : femaleVersion;
+                genderNeutralNames.push({
+                    ...bestVersion,
+                    gender: 'neutral'
+                });
+            }
+        });
+        
+        return genderNeutralNames;
     }
 
     parseListInput(input) {
@@ -123,11 +155,14 @@ class NameGenerator {
     }
 
     filterNames(filter) {
-        return this.names.filter(nameObj => {
+        // Choose the appropriate dataset based on gender filter
+        const dataset = filter.gender === 'neutral' ? this.genderNeutralNames : this.names;
+        
+        return dataset.filter(nameObj => {
             const name = nameObj.name.toLowerCase();
             
             // Gender filter
-            if (filter.gender && nameObj.gender !== filter.gender) {
+            if (filter.gender && filter.gender !== 'neutral' && nameObj.gender !== filter.gender) {
                 return false;
             }
             
@@ -251,9 +286,10 @@ class NameGenerator {
     createNameListHTML(names) {
         if (names.length === 0) return '<div class="results-placeholder"><p class="placeholder-text">No names found</p></div>';
         
-        const namesHTML = names.map(nameObj => 
-            `<div class="name-item" data-gender="${nameObj.gender}" data-popularity="${nameObj.popularity}" title="Popularity: ${nameObj.popularity}">${nameObj.name}</div>`
-        ).join('');
+        const namesHTML = names.map(nameObj => {
+            const genderIcon = nameObj.gender === 'neutral' ? '⚧' : (nameObj.gender === 'm' ? '♂' : '♀');
+            return `<div class="name-item" data-gender="${nameObj.gender}" data-popularity="${nameObj.popularity}" title="Popularity: ${nameObj.popularity}">${nameObj.name} ${genderIcon}</div>`;
+        }).join('');
         
         return `<div class="name-list">${namesHTML}</div>`;
     }

@@ -149,4 +149,4 @@ This is a static application, but improvements are welcome:
 
 ## 📄 License
 
-Same license as the main project.
+Same license as the main project (MIT).
