@@ -21,6 +21,8 @@ class NameGenerator {
         this.notStartingInput = document.getElementById('notStarting');
         this.notEndingInput = document.getElementById('notEnding');
         this.notContainingInput = document.getElementById('notContaining');
+        this.minSyllablesSelect = document.getElementById('minSyllables');
+        this.maxSyllablesSelect = document.getElementById('maxSyllables');
         this.batchSizeInput = document.getElementById('batchSize');
         
         // Buttons
@@ -59,6 +61,8 @@ class NameGenerator {
             this.notStartingInput,
             this.notEndingInput,
             this.notContainingInput,
+            this.minSyllablesSelect,
+            this.maxSyllablesSelect,
             this.batchSizeInput
         ];
         
@@ -150,6 +154,8 @@ class NameGenerator {
             notStartingWith: this.parseListInput(this.notStartingInput.value),
             notEndingWith: this.parseListInput(this.notEndingInput.value),
             notContaining: this.parseListInput(this.notContainingInput.value),
+            minSyllables: parseInt(this.minSyllablesSelect.value) || null,
+            maxSyllables: parseInt(this.maxSyllablesSelect.value) || null,
             batchSize: parseInt(this.batchSizeInput.value) || 10
         };
     }
@@ -210,6 +216,15 @@ class NameGenerator {
                         return false;
                     }
                 }
+            }
+            
+            // Syllable range filter
+            if (filter.minSyllables && nameObj.syllables < filter.minSyllables) {
+                return false;
+            }
+            
+            if (filter.maxSyllables && nameObj.syllables > filter.maxSyllables) {
+                return false;
             }
             
             return true;
@@ -308,6 +323,8 @@ class NameGenerator {
         this.notStartingInput.value = '';
         this.notEndingInput.value = '';
         this.notContainingInput.value = '';
+        this.minSyllablesSelect.value = '1';
+        this.maxSyllablesSelect.value = '10';
         this.batchSizeInput.value = '10';
         
         this.resultsContainer.innerHTML = `
@@ -374,7 +391,9 @@ class NameGenerator {
                this.containsInput.value.trim() ||
                this.notStartingInput.value.trim() ||
                this.notEndingInput.value.trim() ||
-               this.notContainingInput.value.trim();
+               this.notContainingInput.value.trim() ||
+               this.minSyllablesSelect.value !== '1' ||
+               this.maxSyllablesSelect.value !== '10';
     }
 }
 

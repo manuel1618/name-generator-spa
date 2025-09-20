@@ -62,26 +62,60 @@
                         <input type="text" id="notStarting" class="filter-input" placeholder="e.g., X, Y, Z">
                         <small class="filter-hint">Comma-separated letters</small>
                     </div>
-
+                    
                     <!-- Not Ending With -->
                     <div class="filter-group">
                         <label for="notEnding" class="filter-label">Not ending with 🚫</label>
                         <input type="text" id="notEnding" class="filter-input" placeholder="e.g., x, y, z">
                         <small class="filter-hint">Comma-separated letters</small>
                     </div>
-
+                    
                     <!-- Not Containing -->
                     <div class="filter-group">
                         <label for="notContaining" class="filter-label">Not containing 🚫</label>
                         <input type="text" id="notContaining" class="filter-input" placeholder="e.g., q, x, z">
                         <small class="filter-hint">Comma-separated letters</small>
                     </div>
-
                     <!-- Batch Size -->
                     <div class="filter-group">
                         <label for="batchSize" class="filter-label">Batch size 📦</label>
                         <input type="number" id="batchSize" class="filter-input" value="10" min="1" max="100">
                     </div>
+                    
+                    <!-- Min Syllables -->
+                    <div class="filter-group">
+                        <label for="minSyllables" class="filter-label">Min syllables 📊</label>
+                        <select id="minSyllables" class="filter-select">
+                            <option value="1">1 syllable</option>
+                            <option value="2">2 syllables</option>
+                            <option value="3">3 syllables</option>
+                            <option value="4">4 syllables</option>
+                            <option value="5">5 syllables</option>
+                            <option value="6">6 syllables</option>
+                            <option value="7">7 syllables</option>
+                            <option value="8">8 syllables</option>
+                            <option value="9">9 syllables</option>
+                            <option value="10">10 syllables</option>
+                        </select>
+                    </div>
+
+                    <!-- Max Syllables -->
+                    <div class="filter-group">
+                        <label for="maxSyllables" class="filter-label">Max syllables 📊</label>
+                        <select id="maxSyllables" class="filter-select">
+                            <option value="1">1 syllable</option>
+                            <option value="2">2 syllables</option>
+                            <option value="3">3 syllables</option>
+                            <option value="4">4 syllables</option>
+                            <option value="5">5 syllables</option>
+                            <option value="6">6 syllables</option>
+                            <option value="7">7 syllables</option>
+                            <option value="8">8 syllables</option>
+                            <option value="9">9 syllables</option>
+                            <option value="10" selected>10 syllables</option>
+                        </select>
+                    </div>
+
                 </div>
 
                 <!-- Action Buttons -->
