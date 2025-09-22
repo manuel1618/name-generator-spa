@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎯 Name Generator</title>
-    <meta name="description" content="Generate random names with custom filters. Mobile-friendly name generator with 13,247 names.">
+    <meta name="description"
+        content="Generate random names with custom filters. Mobile-friendly name generator with 13,247 names.">
     <meta name="theme-color" content="#6366f1">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://umami.manuel-ramsaier.com/script.js"
+        data-website-id="46d7aee4-93c7-44ae-a413-9cee3767f9e4"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
@@ -24,7 +29,7 @@
         <section class="filter-section">
             <div class="filter-card">
                 <h2 class="filter-title">Filter Options ✨</h2>
-                
+
                 <div class="filter-grid">
                     <!-- Gender Selection -->
                     <div class="filter-group">
@@ -52,7 +57,7 @@
                     <!-- Must Contain -->
                     <div class="filter-group">
                         <label for="contains" class="filter-label">Must contain ✅</label>
-                        <input type="text" id="contains" class="filter-input" placeholder="e.g., a, e, i"> 
+                        <input type="text" id="contains" class="filter-input" placeholder="e.g., a, e, i">
                         <small class="filter-hint">Comma-separated letters</small>
                     </div>
 
@@ -62,14 +67,14 @@
                         <input type="text" id="notStarting" class="filter-input" placeholder="e.g., X, Y, Z">
                         <small class="filter-hint">Comma-separated letters</small>
                     </div>
-                    
+
                     <!-- Not Ending With -->
                     <div class="filter-group">
                         <label for="notEnding" class="filter-label">Not ending with 🚫</label>
                         <input type="text" id="notEnding" class="filter-input" placeholder="e.g., x, y, z">
                         <small class="filter-hint">Comma-separated letters</small>
                     </div>
-                    
+
                     <!-- Not Containing -->
                     <div class="filter-group">
                         <label for="notContaining" class="filter-label">Not containing 🚫</label>
@@ -81,7 +86,7 @@
                         <label for="batchSize" class="filter-label">Batch size 📦</label>
                         <input type="number" id="batchSize" class="filter-input" value="10" min="1" max="100">
                     </div>
-                    
+
                     <!-- Min Syllables -->
                     <div class="filter-group">
                         <label for="minSyllables" class="filter-label">Min syllables 📊</label>
@@ -136,7 +141,7 @@
                         <span id="resultsTime" class="results-time"></span>
                     </div>
                 </div>
-                
+
                 <div id="resultsContainer" class="results-container">
                     <div class="results-placeholder">
                         <p class="placeholder-text">Click "Generate Names" to see results</p>
@@ -158,6 +163,25 @@
                 <span id="totalNames" class="total-names">13,247 names available</span>
             </div>
         </footer>
+        <footer class="site-footer" role="contentinfo">
+            <a href="https://manuel-ramsaier.com" class="site-credit" target="_blank" rel="noopener"
+                aria-label="Check who made this on manuel-ramsaier.com">
+                <span class="footer-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z"
+                            fill="currentColor" />
+                    </svg>
+                </span>
+                <span class="footer-text">Made by Manu</span>
+                <span class="footer-icon external" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 3h7v7h-2V6.414l-9.293 9.293-1.414-1.414L17.586 5H14V3Z" fill="currentColor" />
+                        <path d="M5 5h6v2H7v10h10v-4h2v6H5V5Z" fill="currentColor" />
+                    </svg>
+                </span>
+            </a>
+        </footer>
     </div>
 
     <!-- Loading Overlay -->
@@ -170,4 +194,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
